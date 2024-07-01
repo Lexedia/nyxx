@@ -134,6 +134,15 @@ class GatewayApiOptions extends RestApiOptions {
         if (compression == GatewayCompression.transportZStd) 'compress': 'zstd-stream',
       };
 
+  /// The operating system name to report when identifying to the Gateway.
+  final String operatingSystem;
+
+  /// The browser to report when identifying to the Gateway.
+  final String browser;
+
+  /// The device to report when identifying to the Gateway.
+  final String device;
+
   /// Create a new [GatewayApiOptions].
   GatewayApiOptions({
     required super.token,
@@ -145,7 +154,11 @@ class GatewayApiOptions extends RestApiOptions {
     this.totalShards,
     this.largeThreshold,
     this.initialPresence,
-  }) : compression = compression ?? defaultCompression;
+    this.browser = 'nyxx',
+    this.device = 'nyxx',
+    String? operatingSystem,
+  })  : compression = compression ?? defaultCompression,
+        operatingSystem = operatingSystem ?? Platform.operatingSystem;
 }
 
 /// The format of Gateway payloads.
