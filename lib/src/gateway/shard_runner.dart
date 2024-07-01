@@ -292,9 +292,9 @@ class ShardRunner {
       data: {
         'token': data.apiOptions.token,
         'properties': {
-          'os': Platform.operatingSystem,
-          'browser': 'nyxx',
-          'device': 'nyxx',
+          'os': data.apiOptions.operatingSystem,
+          'browser': data.apiOptions.browser,
+          'device': data.apiOptions.device,
         },
         if (data.apiOptions.compression == GatewayCompression.payload) 'compress': true,
         if (data.apiOptions.largeThreshold != null) 'large_threshold': data.apiOptions.largeThreshold,
