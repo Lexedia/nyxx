@@ -81,6 +81,8 @@ class Gateway extends GatewayManager with EventParser {
   final Completer<void> _doneCompleter = Completer();
   bool _isClosed = false;
 
+  StreamController<ShardMessage> get messagesController => _messagesController;
+
   /// A stream of dispatch events received from all shards.
   // Make this late instead of a getter so only a single subscription is made, which prevents events from being parsed multiple times.
   late final Stream<DispatchEvent> events = messages.transform(StreamTransformer.fromBind((messages) async* {
@@ -88,12 +90,17 @@ class Gateway extends GatewayManager with EventParser {
       if (message is! EventReceived) continue;
 
       final event = message.event;
-      if (event is! RawDispatchEvent) continue;
 
-      final parsedEvent = parseDispatchEvent(event);
-      // Update the cache as needed.
-      client.updateCacheWith(parsedEvent);
-      yield parsedEvent;
+      if (!event.isIntentional) {
+        if (event is! RawDispatchEvent) continue;
+
+        final parsedEvent = parseDispatchEvent(event);
+        // Update the cache as needed.
+        client.updateCacheWith(parsedEvent);
+        yield parsedEvent;
+      } else {
+        yield event as DispatchEvent;
+      }
     }
   })).asBroadcastStream();
 
