@@ -9,9 +9,12 @@ abstract class GatewayEvent with ToStringHelper {
   /// The opcode of this event.
   final Opcode opcode;
 
+  /// Whether is event was intentionally sent.
+  bool isIntentional;
+
   /// {@macro gateway_event}
   /// @nodoc
-  GatewayEvent({required this.opcode});
+  GatewayEvent({required this.opcode, this.isIntentional = false});
 }
 
 /// {@template raw_dispatch_event}
