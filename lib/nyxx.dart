@@ -70,7 +70,16 @@ export 'src/builders/message/component.dart'
 export 'src/builders/message/poll.dart' show PollAnswerBuilder, PollBuilder, PollMediaBuilder;
 export 'src/builders/webhook.dart' show WebhookBuilder, WebhookUpdateBuilder;
 export 'src/builders/guild/guild.dart' show GuildBuilder, GuildUpdateBuilder, GuildIncidentsUpdateBuilder;
-export 'src/builders/guild/member.dart' show CurrentMemberUpdateBuilder, MemberBuilder, MemberUpdateBuilder;
+export 'src/builders/guild/member.dart'
+    show
+        CurrentMemberUpdateBuilder,
+        MemberBuilder,
+        MemberUpdateBuilder,
+        MemberFilterBuilder,
+        MemberPaginationFilter,
+        QueryBuilder,
+        RangeQueryBuilder,
+        SafetySignalsBuilder;
 export 'src/builders/guild/welcome_screen.dart' show WelcomeScreenUpdateBuilder;
 export 'src/builders/guild/widget.dart' show WidgetSettingsUpdateBuilder;
 export 'src/builders/guild/scheduled_event.dart' show ScheduledEventBuilder, ScheduledEventUpdateBuilder, RecurrenceRuleBuilder;
@@ -112,7 +121,7 @@ export 'src/http/managers/guild_manager.dart' show GuildManager;
 export 'src/http/managers/application_manager.dart' show ApplicationManager;
 export 'src/http/managers/voice_manager.dart' show VoiceManager;
 export 'src/http/managers/invite_manager.dart' show InviteManager;
-export 'src/http/managers/member_manager.dart' show MemberManager;
+export 'src/http/managers/member_manager.dart' show MemberManager, QueryGuildMembersResponse;
 export 'src/http/managers/role_manager.dart' show RoleManager;
 export 'src/http/managers/gateway_manager.dart' show GatewayManager;
 export 'src/http/managers/scheduled_event_manager.dart' show ScheduledEventManager;
@@ -253,7 +262,7 @@ export 'src/models/guild/guild.dart'
         UserGuild,
         IncidentsData;
 export 'src/models/guild/integration.dart' show PartialIntegration, Integration, IntegrationAccount, IntegrationApplication, IntegrationExpireBehavior;
-export 'src/models/guild/member.dart' show Member, MemberFlags, PartialMember;
+export 'src/models/guild/member.dart' show Member, MemberFlags, PartialMember, JoinSourceType, MemberSortType, SupplementalGuildMember;
 export 'src/models/guild/onboarding.dart' show Onboarding, OnboardingPrompt, OnboardingPromptOption, OnboardingPromptType, OnboardingMode;
 export 'src/models/guild/welcome_screen.dart' show WelcomeScreen, WelcomeScreenChannel;
 export 'src/models/guild/scheduled_event.dart'
@@ -373,7 +382,18 @@ export 'src/models/gateway/events/soundboard.dart'
 export 'src/models/gateway/events/webhook.dart' show WebhooksUpdateEvent;
 export 'src/models/gateway/events/entitlement.dart' show EntitlementCreateEvent, EntitlementDeleteEvent, EntitlementUpdateEvent;
 export 'src/models/presence.dart'
-    show Activity, ActivityAssets, ActivityButton, ActivityFlags, ActivityParty, ActivitySecrets, ActivityTimestamps, ClientStatus, ActivityType, UserStatus;
+    show
+        Activity,
+        ActivityAssets,
+        ActivityButton,
+        ActivityFlags,
+        ActivityParty,
+        ActivitySecrets,
+        ActivityTimestamps,
+        ClientStatus,
+        ActivityType,
+        UserStatus,
+        ActivityPlatform;
 export 'src/models/emoji.dart' show Emoji, GuildEmoji, PartialEmoji, TextEmoji;
 export 'src/models/sticker/guild_sticker.dart' show GuildSticker, PartialGuildSticker;
 export 'src/models/sticker/global_sticker.dart' show GlobalSticker, PartialGlobalSticker;

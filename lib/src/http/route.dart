@@ -164,6 +164,8 @@ extension RouteHelpers on HttpRoute {
   /// Adds the [`regions`](https://discord.com/developers/docs/resources/voice#list-voice-regions) part to this [HttpRoute].
   void regions() => add(HttpRoutePart("regions"));
 
+  void membersSearch() => add(HttpRoutePart("members-search"));
+
   /// Adds the [`search`](https://discord.com/developers/docs/resources/guild#search-guild-members) part to this [HttpRoute].
   void search() => add(HttpRoutePart("search"));
 
