@@ -59,6 +59,7 @@ abstract class GatewayManager {
       isInstance: tryParse(raw['instance']),
       flags: tryParse(raw['flags'], ActivityFlags.new),
       buttons: tryParseMany(raw['buttons'], parseActivityButton),
+      platform: tryParse(raw['platform'], ActivityPlatform.new),
     );
   }
 
@@ -106,6 +107,7 @@ abstract class GatewayManager {
       desktop: maybeParse(raw['desktop'], UserStatus.new),
       mobile: maybeParse(raw['mobile'], UserStatus.new),
       web: maybeParse(raw['web'], UserStatus.new),
+      embedded: maybeParse(raw['embedded'], UserStatus.new)
     );
   }
 

@@ -17,9 +17,12 @@ class ClientStatus with ToStringHelper {
   /// The client's status on a web session, or a bot client's status.
   final UserStatus? web;
 
+  /// The user's status on an active embedded (Xbox, PlayStation) session.
+  final UserStatus? embedded;
+
   /// {@macro client_status}
   /// @nodoc
-  ClientStatus({required this.desktop, required this.mobile, required this.web});
+  ClientStatus({required this.desktop, required this.mobile, required this.web, required this.embedded});
 }
 
 /// The status of a client.
@@ -28,12 +31,30 @@ final class UserStatus extends EnumLike<String, UserStatus> {
   static const dnd = UserStatus('dnd');
   static const idle = UserStatus('idle');
   static const offline = UserStatus('offline');
+  static const invisible = UserStatus('invisible');
+  static const unknown = UserStatus('unknown');
 
   /// @nodoc
   const UserStatus(super.value);
 
   @Deprecated('The .parse() constructor is deprecated. Use the unnamed constructor instead.')
   UserStatus.parse(String value) : this(value);
+}
+
+/// The platform where this [Activity] is used on.
+final class ActivityPlatform extends EnumLike<String, ActivityPlatform> {
+  static const desktop = ActivityPlatform('desktop');
+  static const xbox = ActivityPlatform('xbox');
+  static const samsung = ActivityPlatform('samsung');
+  static const ios = ActivityPlatform('ios');
+  static const android = ActivityPlatform('android');
+  static const embedded = ActivityPlatform('embedded');
+  static const ps4 = ActivityPlatform('ps4');
+  static const ps5 = ActivityPlatform('ps5');
+
+
+  /// @nodoc
+  const ActivityPlatform(super.value);
 }
 
 /// {@template activity}
@@ -85,6 +106,9 @@ class Activity with ToStringHelper {
   /// A list of buttons displayed with the activity.
   final List<ActivityButton>? buttons;
 
+  /// The platform this [Activity] is being played on.
+  final ActivityPlatform? platform;
+
   /// {@macro activity}
   /// @nodoc
   Activity({
@@ -103,6 +127,7 @@ class Activity with ToStringHelper {
     required this.isInstance,
     required this.flags,
     required this.buttons,
+    required this.platform,
   });
 }
 
@@ -114,6 +139,8 @@ final class ActivityType extends EnumLike<int, ActivityType> {
   static const watching = ActivityType(3);
   static const custom = ActivityType(4);
   static const competing = ActivityType(5);
+  @Deprecated('')
+  static const hang = ActivityType(6);
 
   const ActivityType(super.value);
 

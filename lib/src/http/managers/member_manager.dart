@@ -10,6 +10,7 @@ import 'package:nyxx/src/models/permissions.dart';
 import 'package:nyxx/src/models/snowflake.dart';
 import 'package:nyxx/src/utils/cache_helpers.dart';
 import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A manager for [Member]s.
 class MemberManager extends Manager<Member> {
@@ -46,11 +47,31 @@ class MemberManager extends Manager<Member> {
     );
   }
 
+  SupplementalGuildMember parseSupplementalGuildMember(Map<String, Object?> raw) {
+    return SupplementalGuildMember(
+      integrationType: raw['integration_type'] as int?,
+      inviterId: maybeParse(raw['inviter_id'], Snowflake.parse),
+      joinSourceType: JoinSourceType(raw['join_source_type'] as int),
+      member: parse(raw['member'] as Map<String, Object?>),
+      sourceInviteCode: raw['source_invite_code'] as String?,
+    );
+  }
+
+  QueryGuildMembersResponse parseQueryMembersResponse(Map<String, Object?> raw) {
+    return QueryGuildMembersResponse(
+      guildId: Snowflake.parse(raw['guild_id']!),
+      members: parseMany(raw['members'] as List, parseSupplementalGuildMember),
+      pageResultCount: raw['page_result_count'] as int,
+      totalResultCount: raw['total_result_count'] as int,
+    );
+  }
+
   @override
   Future<Member> fetch(Snowflake id) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: id.toString());
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: id.toString());
     final request = BasicRequest(route);
 
     final response = await client.httpHandler.executeSafe(request);
@@ -62,13 +83,11 @@ class MemberManager extends Manager<Member> {
 
   /// List the members in the guild.
   Future<List<Member>> list({int? limit, Snowflake? after}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members();
-    final request = BasicRequest(route, queryParameters: {
-      if (limit != null) 'limit': limit.toString(),
-      if (after != null) 'after': after.toString(),
-    });
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members();
+    final request = BasicRequest(route, queryParameters: {if (limit != null) 'limit': limit.toString(), if (after != null) 'after': after.toString()});
 
     final response = await client.httpHandler.executeSafe(request);
     final members = parseMany(response.jsonBody as List, parse);
@@ -79,9 +98,10 @@ class MemberManager extends Manager<Member> {
 
   @override
   Future<Member> create(MemberBuilder builder) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: builder.userId.toString());
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: builder.userId.toString());
     final request = BasicRequest(route, method: 'PUT', body: jsonEncode(builder.build()));
 
     final response = await client.httpHandler.executeSafe(request);
@@ -97,9 +117,10 @@ class MemberManager extends Manager<Member> {
 
   @override
   Future<Member> update(Snowflake id, MemberUpdateBuilder builder, {String? auditLogReason}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: id.toString());
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: id.toString());
     final request = BasicRequest(route, method: 'PATCH', auditLogReason: auditLogReason, body: jsonEncode(builder.build()));
 
     final response = await client.httpHandler.executeSafe(request);
@@ -112,9 +133,10 @@ class MemberManager extends Manager<Member> {
   /// Kick a member.
   @override
   Future<void> delete(Snowflake id, {String? auditLogReason}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: id.toString());
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: id.toString());
     final request = BasicRequest(route, method: 'DELETE', auditLogReason: auditLogReason);
 
     await client.httpHandler.executeSafe(request);
@@ -123,10 +145,11 @@ class MemberManager extends Manager<Member> {
 
   /// Search for members whose username begins with [query].
   Future<List<Member>> search(String query, {int? limit}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members()
-      ..search();
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members()
+          ..search();
     final request = BasicRequest(route, queryParameters: {'query': query, if (limit != null) 'limit': limit.toString()});
 
     final response = await client.httpHandler.executeSafe(request);
@@ -136,11 +159,50 @@ class MemberManager extends Manager<Member> {
     return members;
   }
 
+  /// Returns a wrapped response of [SupplementalGuildMember] objects containing [Member] objects that match a specified query. Requires the `MANAGE_GUILD` permission.
+  ///
+  /// This endpoint utilizes Elasticsearch to power results. This means that while it is very powerful, it's also tricky to use and reliant on the index, meaning results may not be immediately available for a recently-joined member.
+  /// [limit] is the max number of members to return (1-1000, default 25).
+  /// [sort] is the sorting algorithm to use, default [MemberSortType.joinedAtDesc].
+  ///
+  Future<QueryGuildMembersResponse> query({
+    int? limit,
+    MemberSortType? sort,
+    MemberFilterBuilder? orQuery,
+    MemberFilterBuilder? andQuery,
+    MemberPaginationFilter? before,
+    MemberPaginationFilter? after,
+  }) async {
+    final request = BasicRequest(
+      HttpRoute()
+        ..guilds(id: guildId.toString())
+        ..membersSearch(),
+      body: jsonEncode({
+        if (limit != null) 'limit': limit,
+        if (sort != null) 'sort': sort.value,
+        if (orQuery != null) 'or_query': orQuery.build(),
+        if (andQuery != null) 'and_query': andQuery.build(),
+        if (before != null) 'before': before.build(),
+        if (after != null) 'after': after.build(),
+      }),
+      method: 'POST',
+    );
+
+    final response = await client.httpHandler.executeSafe(request);
+
+    if (response.statusCode == 202) {
+      throw NyxxException('Try to poll this endpoint after ${response.jsonBody['retry_after']} minutes');
+    }
+
+    return parseQueryMembersResponse(response.jsonBody);
+  }
+
   /// Update the current member in the guild.
   Future<Member> updateCurrentMember(CurrentMemberUpdateBuilder builder, {String? auditLogReason}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: '@me');
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: '@me');
     final request = BasicRequest(route, method: 'PATCH', body: jsonEncode(builder.build()), auditLogReason: auditLogReason);
 
     final response = await client.httpHandler.executeSafe(request);
@@ -152,10 +214,11 @@ class MemberManager extends Manager<Member> {
 
   /// Add a role to a member in the guild.
   Future<void> addRole(Snowflake id, Snowflake roleId, {String? auditLogReason}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: id.toString())
-      ..roles(id: roleId.toString());
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: id.toString())
+          ..roles(id: roleId.toString());
     final request = BasicRequest(route, method: 'PUT', auditLogReason: auditLogReason);
 
     await client.httpHandler.executeSafe(request);
@@ -163,12 +226,29 @@ class MemberManager extends Manager<Member> {
 
   /// Remove a role from a member in the guild.
   Future<void> removeRole(Snowflake id, Snowflake roleId, {String? auditLogReason}) async {
-    final route = HttpRoute()
-      ..guilds(id: guildId.toString())
-      ..members(id: id.toString())
-      ..roles(id: roleId.toString());
+    final route =
+        HttpRoute()
+          ..guilds(id: guildId.toString())
+          ..members(id: id.toString())
+          ..roles(id: roleId.toString());
     final request = BasicRequest(route, method: 'DELETE', auditLogReason: auditLogReason);
 
     await client.httpHandler.executeSafe(request);
   }
+}
+
+class QueryGuildMembersResponse with ToStringHelper {
+  /// The id of the guild queried.
+  final Snowflake guildId;
+
+  /// The resulting members.
+  final List<SupplementalGuildMember> members;
+
+  /// The number of results returned.
+  final int pageResultCount;
+
+  /// The total number of results found.
+  final int totalResultCount;
+
+  QueryGuildMembersResponse({required this.guildId, required this.members, required this.pageResultCount, required this.totalResultCount});
 }

@@ -8,7 +8,9 @@ import 'package:nyxx/src/models/snowflake.dart';
 import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
 import 'package:nyxx/src/models/user/avatar_decoration_data.dart';
 import 'package:nyxx/src/models/user/user.dart';
+import 'package:nyxx/src/utils/enum_like.dart';
 import 'package:nyxx/src/utils/flags.dart';
+import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A partial [Member].
 class PartialMember extends WritableSnowflakeEntity<Member> {
@@ -124,35 +126,107 @@ class Member extends PartialMember {
   List<PartialRole> get roles => roleIds.map((e) => manager.client.guilds[manager.guildId].roles[e]).toList();
 
   /// This member's avatar.
-  CdnAsset? get avatar => avatarHash == null
-      ? null
-      : CdnAsset(
-          client: manager.client,
-          base: HttpRoute()
-            ..guilds(id: manager.guildId.toString())
-            ..users(id: id.toString())
-            ..avatars(),
-          hash: avatarHash!,
-        );
+  CdnAsset? get avatar =>
+      avatarHash == null
+          ? null
+          : CdnAsset(
+            client: manager.client,
+            base:
+                HttpRoute()
+                  ..guilds(id: manager.guildId.toString())
+                  ..users(id: id.toString())
+                  ..avatars(),
+            hash: avatarHash!,
+          );
 
-  CdnAsset? get avatarDecoration => avatarDecorationHash == null
-      ? null
-      : CdnAsset(
-          client: manager.client,
-          base: HttpRoute()..avatarDecorationPresets(),
-          hash: avatarDecorationHash!,
-        );
+  CdnAsset? get avatarDecoration =>
+      avatarDecorationHash == null ? null : CdnAsset(client: manager.client, base: HttpRoute()..avatarDecorationPresets(), hash: avatarDecorationHash!);
 
-  CdnAsset? get banner => bannerHash == null
-      ? null
-      : CdnAsset(
-          client: manager.client,
-          base: HttpRoute()
-            ..guilds(id: manager.guildId.toString())
-            ..users(id: id.toString())
-            ..banners(),
-          hash: bannerHash!,
-        );
+  CdnAsset? get banner =>
+      bannerHash == null
+          ? null
+          : CdnAsset(
+            client: manager.client,
+            base:
+                HttpRoute()
+                  ..guilds(id: manager.guildId.toString())
+                  ..users(id: id.toString())
+                  ..banners(),
+            hash: bannerHash!,
+          );
+}
+
+/// Additional information about a user's join source in a [Guild].
+class SupplementalGuildMember with ToStringHelper {
+  /// The indder member object.
+  final Member member;
+
+  /// How the user joined the guild.
+  final JoinSourceType joinSourceType;
+
+  /// The invite code or vanity used to join the guild, if applicable.
+  final String? sourceInviteCode;
+
+  /// The ID of the user who invited the user to the guild, if applicable.
+  final Snowflake? inviterId;
+
+  /// The type of integration that added the user to the guild, if applicable.
+  final int? integrationType;
+
+  const SupplementalGuildMember({
+    required this.integrationType,
+    required this.inviterId,
+    required this.joinSourceType,
+    required this.member,
+    required this.sourceInviteCode,
+  });
+
+  PartialUser? get inviter => inviterId != null ? member.manager.client.users[inviterId!] : null;
+}
+
+final class JoinSourceType extends EnumLike<int, JoinSourceType> {
+  /// The user joined the guild through an unknown source.
+  static const unspecified = JoinSourceType(0);
+
+  /// The user was added to the guild by a bot using the `guilds.join` OAuth2 scope.
+  static const bot = JoinSourceType(1);
+
+  /// The user was added to the guild by an integration (e.g. Twitch).
+  static const integration = JoinSourceType(2);
+
+  /// The user joined the guild through guild discovery.
+  static const discovery = JoinSourceType(3);
+
+  /// The user joined the guild through a student hub.
+  static const hub = JoinSourceType(4);
+
+  /// The user joined the guild through an invite.
+  static const invite = JoinSourceType(5);
+
+  /// The user joined the guild through a vanity URL.
+  static const vanityUrl = JoinSourceType(6);
+
+  /// The user was accepted into the guild after applying for membership.
+  static const manualMemberVerification = JoinSourceType(7);
+
+  /// Creates a [JoinSourceType] from [value].
+  const JoinSourceType(super.value);
+}
+
+final class MemberSortType extends EnumLike<int, MemberSortType> {
+  /// Sort by when the user joined the guild descending (default).
+  static const joinedAtDesc = MemberSortType(1);
+
+  /// Sort by when the user joined the guild ascending.
+  static const joinedAtAsc = MemberSortType(2);
+
+  /// Sort by when the user joined Discord descending.
+  static const userIdDesc = MemberSortType(3);
+
+  /// Sort by when the user joined Discord ascending.
+  static const userIdAsc = MemberSortType(4);
+
+  const MemberSortType(super.value);
 }
 
 /// Flags that can be applied to a [Member].
