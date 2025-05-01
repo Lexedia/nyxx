@@ -17,6 +17,11 @@ class CacheManager {
 
   final Map<String, Cache<dynamic>> _caches = {};
 
+  final StreamController<dynamic> _onCachesUpdateController = StreamController.broadcast();
+
+  /// Emitted when something is added to any cache.
+  Stream<dynamic> get onCachesUpdate => _onCachesUpdateController.stream;
+
   /// A map containing all the caches attached to [client].
   ///
   /// Cache identifiers are mapped to their respective [Cache] instances.
@@ -53,6 +58,8 @@ class CacheManager {
 
     final cache = Cache._(this, identifier, config);
     _onEmpty(cache); // Cache starts out empty. Don't be afraid to discard it.
+
+    cache.onCacheUpdate.listen(_onCachesUpdateController.add);
     return cache;
   }
 
@@ -139,6 +146,11 @@ class Cache<T> extends MapBase<Snowflake, T> {
   /// The manager for this cache.
   final CacheManager manager;
 
+  final StreamController<T> _onCacheUpdateController = StreamController.broadcast();
+
+  /// Emitted whenever an entity is added to this cache.
+  Stream<T> get onCacheUpdate => _onCacheUpdateController.stream;
+
   /// The client this cache is for.
   Nyxx get client => manager.client;
 
@@ -221,6 +233,8 @@ class Cache<T> extends MapBase<Snowflake, T> {
       (entry) => entry..value = value,
       ifAbsent: () => _CacheEntry(id: key, value: value),
     );
+
+    _onCacheUpdateController.add(entry.value);
 
     _recordUse(entry);
     scheduleFilterItems();
