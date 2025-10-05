@@ -35,7 +35,7 @@ class HttpHandler {
   final Nyxx client;
 
   /// The HTTP client used to make requests.
-  final Client httpClient = Client();
+  final Client httpClient;
 
   final Map<String, HttpBucket> _buckets = {};
 
@@ -100,7 +100,7 @@ class HttpHandler {
   /// Create a new [HttpHandler].
   ///
   /// {@macro http_handler}
-  HttpHandler(this.client) {
+  HttpHandler(this.client, [Client? httpClient]) : httpClient = httpClient ?? Client() {
     if (client.options.rateLimitWarningThreshold case final threshold?) {
       onRateLimit.listen((info) {
         final (:request, :delay, :isGlobal, :isAnticipated) = info;
