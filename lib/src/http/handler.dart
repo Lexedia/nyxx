@@ -11,6 +11,7 @@ import 'package:nyxx/src/http/request.dart';
 import 'package:nyxx/src/http/response.dart';
 import 'package:nyxx/src/plugin/plugin.dart';
 import 'package:nyxx/src/utils/iterable_extension.dart';
+import 'package:sentry/sentry.dart';
 
 extension on HttpRequest {
   String get loggingId => '$method $route';
@@ -145,11 +146,27 @@ class HttpHandler {
   ///
   /// This method calls [NyxxPlugin.interceptRequest] on all plugins registered to the [client] which may intercept the [request].
   Future<HttpResponse> execute(HttpRequest request) async {
+    final transaction = Sentry.startTransaction(
+      'HTTP ${request.loggingId}',
+      'nyxx.http',
+      bindToScope: true,
+    );
+
     final executeFn = client.options.plugins.fold(
       _execute,
       (previousValue, plugin) => (request) => plugin.interceptRequest(client, request, previousValue),
     );
-    return await executeFn(request);
+
+    HttpResponse? response;
+
+    try {
+      return response = await executeFn(request);
+    } finally {
+      await transaction.finish(
+        endTimestamp: DateTime.timestamp(),
+        status: response != null ? SpanStatus.fromHttpStatusCode(response.statusCode, fallback: SpanStatus.unknown()) : SpanStatus.unknown(),
+      );
+    }
   }
 
   Future<HttpResponse> _execute(HttpRequest request) async {
