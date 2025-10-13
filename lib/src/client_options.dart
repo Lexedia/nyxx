@@ -1,3 +1,4 @@
+import 'package:http/http.dart';
 import 'package:logging/logging.dart';
 import 'package:nyxx/src/cache/cache.dart';
 import 'package:nyxx/src/client.dart';
@@ -153,11 +154,15 @@ class RestClientOptions extends ClientOptions {
   /// The [CacheConfig] to use for the [Guild.soundboard] manager.
   final CacheConfig<SoundboardSound> soundboardCacheConfig;
 
+  /// The http client to use.
+  final Client? httpClient;
+
   /// Create a new [RestClientOptions].
   const RestClientOptions({
     super.plugins,
     super.loggerName,
     super.rateLimitWarningThreshold,
+    this.httpClient,
     // Users are generally not needed over long periods of time; use a small
     // cache.
     this.userCacheConfig = _smallCacheConfig,
@@ -214,6 +219,7 @@ class GatewayClientOptions extends RestClientOptions {
     super.plugins,
     super.loggerName,
     super.rateLimitWarningThreshold,
+    super.httpClient,
     super.userCacheConfig,
     super.channelCacheConfig,
     super.messageCacheConfig,

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:oauth2/oauth2.dart' hide Client;
-import 'package:http/http.dart';
 import 'package:nyxx/src/builders/presence.dart';
 import 'package:nyxx/src/intents.dart';
 import 'package:nyxx/src/utils/flags.dart';
@@ -51,21 +50,14 @@ class RestApiOptions extends ApiOptions {
   @override
   String get authorizationHeader => 'Bot $token';
 
-  /// The http client to use.
-  final Client? httpClient;
-
   /// Create a new [RestApiOptions].
-  RestApiOptions({required this.token, super.userAgent, this.httpClient});
+  RestApiOptions({required this.token, super.userAgent});
 }
 
 /// Options for connecting the the Discord API using credentials from an OAuth2 flow.
 class OAuth2ApiOptions extends ApiOptions implements RestApiOptions {
   /// The credentials to use when connecting to the API.
   Credentials credentials;
-
-  /// The http client to use.
-  @override
-  final Client? httpClient;
 
   @override
   String get token => credentials.accessToken;
@@ -74,7 +66,7 @@ class OAuth2ApiOptions extends ApiOptions implements RestApiOptions {
   String get authorizationHeader => 'Bearer ${credentials.accessToken}';
 
   /// Create a new [OAuth2ApiOptions].
-  OAuth2ApiOptions({required this.credentials, super.userAgent, this.httpClient});
+  OAuth2ApiOptions({required this.credentials, super.userAgent});
 }
 
 /// Options for connecting to the Discord API for making HTTP requests and connecting to the Gateway
@@ -125,7 +117,6 @@ class GatewayApiOptions extends RestApiOptions {
   GatewayApiOptions({
     required super.token,
     super.userAgent,
-    super.httpClient,
     required this.intents,
     this.payloadFormat = GatewayPayloadFormat.json,
     this.compression = GatewayCompression.transport,
