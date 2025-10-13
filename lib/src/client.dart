@@ -280,7 +280,7 @@ class NyxxGateway with ManagerMixin, EventMixin implements NyxxRest {
   final GatewayClientOptions options;
 
   @override
-  late final HttpHandler httpHandler = HttpHandler(this);
+  late final HttpHandler httpHandler = HttpHandler(this, apiOptions.httpClient);
 
   @override
   PartialApplication get application => _application;
