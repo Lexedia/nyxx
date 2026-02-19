@@ -1,4 +1,4 @@
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 /// Flags used to set the intents when opening a Gateway session.
 class GatewayIntents extends Flags<GatewayIntents> {

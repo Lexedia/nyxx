@@ -1,6 +1,6 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/message/embed.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/message/embed.dart';
 
 class EmbedBuilder extends CreateBuilder<Embed> {
   String? title;

@@ -1,7 +1,7 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:nyxx/nyxx.dart';
-import 'package:nyxx/src/models/interaction.dart';
-import 'package:nyxx/src/models/component.dart';
+import 'package:penyxx/nyxx.dart';
+import 'package:penyxx/src/models/interaction.dart';
+import 'package:penyxx/src/models/component.dart';
 import 'package:test/test.dart';
 
 import '../../../mocks/client.dart';

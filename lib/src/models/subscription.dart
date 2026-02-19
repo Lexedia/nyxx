@@ -1,10 +1,10 @@
-import 'package:nyxx/src/http/managers/subscription_manager.dart';
-import 'package:nyxx/src/models/entitlement.dart';
-import 'package:nyxx/src/models/sku.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/http/managers/subscription_manager.dart';
+import 'package:penyxx/src/models/entitlement.dart';
+import 'package:penyxx/src/models/sku.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 /// A partial [Subscription].
 class PartialSubscription extends ManagedSnowflakeEntity<Subscription> {

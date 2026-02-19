@@ -1,6 +1,6 @@
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A layout type indicating how poll looks.
 ///

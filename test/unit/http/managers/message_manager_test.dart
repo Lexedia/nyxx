@@ -1,6 +1,6 @@
-import 'package:nyxx/src/models/message/message.dart';
+import 'package:penyxx/src/models/message/message.dart';
 import 'package:test/test.dart';
-import 'package:nyxx/nyxx.dart';
+import 'package:penyxx/nyxx.dart';
 
 import '../../../test_manager.dart';
 

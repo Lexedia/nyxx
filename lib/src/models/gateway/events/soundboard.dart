@@ -1,7 +1,7 @@
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/soundboard/soundboard.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/soundboard/soundboard.dart';
 
 /// {@template soundboard_sound_create_event}
 /// Emitted when a guild soundboard sound is created.

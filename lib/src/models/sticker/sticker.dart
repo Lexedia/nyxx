@@ -1,6 +1,6 @@
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 final class StickerType extends EnumLike<int, StickerType> {
   static const standard = StickerType(1);

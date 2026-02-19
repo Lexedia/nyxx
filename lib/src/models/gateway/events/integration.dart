@@ -1,8 +1,8 @@
-import 'package:nyxx/src/models/application.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/guild/integration.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/application.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/guild/integration.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// {@template integration_create_event}
 /// Emitted when an integration is created.

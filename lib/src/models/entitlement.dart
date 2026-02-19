@@ -1,10 +1,10 @@
-import 'package:nyxx/src/http/managers/entitlement_manager.dart';
-import 'package:nyxx/src/models/application.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/http/managers/entitlement_manager.dart';
+import 'package:penyxx/src/models/application.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 /// A partial [Entitlement].
 class PartialEntitlement extends ManagedSnowflakeEntity<Entitlement> {

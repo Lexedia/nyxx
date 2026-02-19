@@ -1,16 +1,16 @@
-import 'package:nyxx/src/builders/guild/member.dart';
-import 'package:nyxx/src/http/cdn/cdn_asset.dart';
-import 'package:nyxx/src/http/managers/member_manager.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/role.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/avatar_decoration_data.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/flags.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/builders/guild/member.dart';
+import 'package:penyxx/src/http/cdn/cdn_asset.dart';
+import 'package:penyxx/src/http/managers/member_manager.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/role.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/avatar_decoration_data.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/flags.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A partial [Member].
 class PartialMember extends WritableSnowflakeEntity<Member> {

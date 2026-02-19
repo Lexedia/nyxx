@@ -1,7 +1,7 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/message/poll.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/message/poll.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// {@macro poll_media}
 class PollMediaBuilder extends CreateBuilder<PollMedia> {

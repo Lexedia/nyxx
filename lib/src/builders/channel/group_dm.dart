@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/models/channel/types/group_dm.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/models/channel/types/group_dm.dart';
 
 class GroupDmUpdateBuilder extends UpdateBuilder<GroupDmChannel> {
   /// The name of the group DM, if changed.

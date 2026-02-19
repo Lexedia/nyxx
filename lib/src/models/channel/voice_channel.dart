@@ -1,5 +1,5 @@
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 /// A voice channel.
 abstract class VoiceChannel implements Channel {

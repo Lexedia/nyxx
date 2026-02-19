@@ -1,8 +1,8 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/image.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/image.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 class EmojiBuilder implements CreateBuilder<GuildEmoji> {
   /// The name of the emoji.

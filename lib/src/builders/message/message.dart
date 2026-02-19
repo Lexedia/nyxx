@@ -1,14 +1,14 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/message/allowed_mentions.dart';
-import 'package:nyxx/src/builders/message/attachment.dart';
-import 'package:nyxx/src/builders/component.dart';
-import 'package:nyxx/src/builders/message/embed.dart';
-import 'package:nyxx/src/builders/message/poll.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/message/message.dart';
-import 'package:nyxx/src/models/message/reference.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/message/allowed_mentions.dart';
+import 'package:penyxx/src/builders/message/attachment.dart';
+import 'package:penyxx/src/builders/component.dart';
+import 'package:penyxx/src/builders/message/embed.dart';
+import 'package:penyxx/src/builders/message/poll.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/message/message.dart';
+import 'package:penyxx/src/models/message/reference.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 // TODO(abitofevrything): Remove replyId, requireReplyToExist, suppressEmbeds and suppressNotifications.
 class MessageBuilder extends CreateBuilder<Message> {

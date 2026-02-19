@@ -1,21 +1,21 @@
-/// @docImport 'package:nyxx/nyxx.dart';
+/// @docImport 'package:penyxx/nyxx.dart';
 library;
 
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/channel/guild_channel.dart';
-import 'package:nyxx/src/models/channel/types/forum.dart';
-import 'package:nyxx/src/models/channel/types/guild_announcement.dart';
-import 'package:nyxx/src/models/channel/types/guild_category.dart';
-import 'package:nyxx/src/models/channel/types/guild_stage.dart';
-import 'package:nyxx/src/models/channel/types/guild_text.dart';
-import 'package:nyxx/src/models/channel/types/guild_voice.dart';
-import 'package:nyxx/src/models/channel/voice_channel.dart';
-import 'package:nyxx/src/models/permission_overwrite.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/building_helpers.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/channel/guild_channel.dart';
+import 'package:penyxx/src/models/channel/types/forum.dart';
+import 'package:penyxx/src/models/channel/types/guild_announcement.dart';
+import 'package:penyxx/src/models/channel/types/guild_category.dart';
+import 'package:penyxx/src/models/channel/types/guild_stage.dart';
+import 'package:penyxx/src/models/channel/types/guild_text.dart';
+import 'package:penyxx/src/models/channel/types/guild_voice.dart';
+import 'package:penyxx/src/models/channel/voice_channel.dart';
+import 'package:penyxx/src/models/permission_overwrite.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/building_helpers.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 class GuildChannelBuilder<T extends GuildChannel> extends CreateBuilder<T> {
   /// {@template channel_name}

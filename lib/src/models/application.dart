@@ -1,20 +1,20 @@
-import 'package:nyxx/src/http/cdn/cdn_asset.dart';
-import 'package:nyxx/src/http/managers/application_manager.dart';
-import 'package:nyxx/src/http/managers/emoji_manager.dart';
-import 'package:nyxx/src/http/managers/entitlement_manager.dart';
-import 'package:nyxx/src/http/managers/sku_manager.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/locale.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/sku.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/team.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/flags.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/http/cdn/cdn_asset.dart';
+import 'package:penyxx/src/http/managers/application_manager.dart';
+import 'package:penyxx/src/http/managers/emoji_manager.dart';
+import 'package:penyxx/src/http/managers/entitlement_manager.dart';
+import 'package:penyxx/src/http/managers/sku_manager.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/locale.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/sku.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/team.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/flags.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A partial [Application] object.
 // We intentionally do not use SnowflakeEntity as applications do not have the same access in the API as other entities with IDs, so they cannot be thought of

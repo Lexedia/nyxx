@@ -1,8 +1,8 @@
 import 'dart:isolate';
 
 import 'package:logging/logging.dart';
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/plugin/plugin.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/plugin/plugin.dart';
 
 /// A global instance of the [IgnoreExceptions] plugin.
 final ignoreExceptions = IgnoreExceptions();

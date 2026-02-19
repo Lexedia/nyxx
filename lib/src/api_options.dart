@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:oauth2/oauth2.dart' hide Client;
-import 'package:nyxx/src/builders/presence.dart';
-import 'package:nyxx/src/intents.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/presence.dart';
+import 'package:penyxx/src/intents.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 /// Options for connecting to the Discord API.
 abstract class ApiOptions {

@@ -1,6 +1,6 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/guild/template.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/guild/template.dart';
 
 class GuildTemplateBuilder extends CreateBuilder<GuildTemplate> {
   String name;

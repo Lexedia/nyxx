@@ -1,8 +1,8 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/guild/member.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/guild/member.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 class MemberBuilder extends CreateBuilder<Member> {
   String accessToken;

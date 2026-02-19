@@ -1,24 +1,24 @@
 import 'dart:async';
 
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/gateway/events/application_command.dart';
-import 'package:nyxx/src/models/gateway/events/auto_moderation.dart';
-import 'package:nyxx/src/models/gateway/events/channel.dart';
-import 'package:nyxx/src/models/gateway/events/entitlement.dart';
-import 'package:nyxx/src/models/gateway/events/guild.dart';
-import 'package:nyxx/src/models/gateway/events/integration.dart';
-import 'package:nyxx/src/models/gateway/events/interaction.dart';
-import 'package:nyxx/src/models/gateway/events/invite.dart';
-import 'package:nyxx/src/models/gateway/events/message.dart';
-import 'package:nyxx/src/models/gateway/events/presence.dart';
-import 'package:nyxx/src/models/gateway/events/ready.dart';
-import 'package:nyxx/src/models/gateway/events/soundboard.dart';
-import 'package:nyxx/src/models/gateway/events/stage_instance.dart';
-import 'package:nyxx/src/models/gateway/events/voice.dart';
-import 'package:nyxx/src/models/gateway/events/webhook.dart';
-import 'package:nyxx/src/models/interaction.dart';
-import 'package:nyxx/src/utils/iterable_extension.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/gateway/events/application_command.dart';
+import 'package:penyxx/src/models/gateway/events/auto_moderation.dart';
+import 'package:penyxx/src/models/gateway/events/channel.dart';
+import 'package:penyxx/src/models/gateway/events/entitlement.dart';
+import 'package:penyxx/src/models/gateway/events/guild.dart';
+import 'package:penyxx/src/models/gateway/events/integration.dart';
+import 'package:penyxx/src/models/gateway/events/interaction.dart';
+import 'package:penyxx/src/models/gateway/events/invite.dart';
+import 'package:penyxx/src/models/gateway/events/message.dart';
+import 'package:penyxx/src/models/gateway/events/presence.dart';
+import 'package:penyxx/src/models/gateway/events/ready.dart';
+import 'package:penyxx/src/models/gateway/events/soundboard.dart';
+import 'package:penyxx/src/models/gateway/events/stage_instance.dart';
+import 'package:penyxx/src/models/gateway/events/voice.dart';
+import 'package:penyxx/src/models/gateway/events/webhook.dart';
+import 'package:penyxx/src/models/interaction.dart';
+import 'package:penyxx/src/utils/iterable_extension.dart';
 
 /// An internal mixin to add event streams to a NyxxGateway client.
 mixin EventMixin implements Nyxx {

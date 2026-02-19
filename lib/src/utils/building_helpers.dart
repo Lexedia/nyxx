@@ -1,4 +1,4 @@
-import 'package:nyxx/nyxx.dart';
+import 'package:penyxx/nyxx.dart';
 
 Map<String, String> makeEmojiMap({Snowflake? emojiId, String? emojiName}) => {
       if (emojiName case final String emojiName?) 'emoji_name': emojiName,

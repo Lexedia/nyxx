@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:nyxx/src/builders/emoji/emoji.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/builders/emoji/emoji.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 import 'manager.dart';
 

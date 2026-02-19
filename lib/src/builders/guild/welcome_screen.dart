@@ -1,7 +1,7 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/guild/welcome_screen.dart';
-import 'package:nyxx/src/utils/building_helpers.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/guild/welcome_screen.dart';
+import 'package:penyxx/src/utils/building_helpers.dart';
 
 class WelcomeScreenUpdateBuilder extends UpdateBuilder<WelcomeScreen> {
   bool? isEnabled;

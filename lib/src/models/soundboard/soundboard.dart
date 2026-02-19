@@ -1,11 +1,11 @@
-import 'package:nyxx/src/http/cdn/cdn_asset.dart';
-import 'package:nyxx/src/http/managers/soundboard_manager.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/user.dart';
+import 'package:penyxx/src/http/cdn/cdn_asset.dart';
+import 'package:penyxx/src/http/managers/soundboard_manager.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/user.dart';
 
 class PartialSoundboardSound extends WritableSnowflakeEntity<SoundboardSound> {
   @override

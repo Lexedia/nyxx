@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-import 'package:nyxx/src/builders/guild/member.dart';
-import 'package:nyxx/src/errors.dart';
-import 'package:nyxx/src/http/managers/manager.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/guild/member.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/builders/guild/member.dart';
+import 'package:penyxx/src/errors.dart';
+import 'package:penyxx/src/http/managers/manager.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/guild/member.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A manager for [Member]s.
 class MemberManager extends Manager<Member> {

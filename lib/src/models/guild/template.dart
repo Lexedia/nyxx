@@ -1,10 +1,10 @@
-import 'package:nyxx/src/builders/guild/template.dart';
-import 'package:nyxx/src/builders/image.dart';
-import 'package:nyxx/src/http/managers/guild_manager.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/builders/guild/template.dart';
+import 'package:penyxx/src/builders/image.dart';
+import 'package:penyxx/src/http/managers/guild_manager.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// {@template guild_template}
 /// A snapshot of a [Guild] that can be used to create a new guild.

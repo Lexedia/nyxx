@@ -1,15 +1,15 @@
-import 'package:nyxx/src/builders/guild/auto_moderation.dart';
-import 'package:nyxx/src/http/managers/auto_moderation_manager.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/channel/text_channel.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/guild/member.dart';
-import 'package:nyxx/src/models/role.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/builders/guild/auto_moderation.dart';
+import 'package:penyxx/src/http/managers/auto_moderation_manager.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/channel/text_channel.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/guild/member.dart';
+import 'package:penyxx/src/models/role.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A partial [AutoModerationRule].
 class PartialAutoModerationRule extends WritableSnowflakeEntity<AutoModerationRule> {

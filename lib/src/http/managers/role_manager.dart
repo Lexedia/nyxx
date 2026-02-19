@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-import 'package:nyxx/src/builders/role.dart';
-import 'package:nyxx/src/http/managers/manager.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/role.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/builders/role.dart';
+import 'package:penyxx/src/http/managers/manager.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/role.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 /// A manager for [Role]s.
 class RoleManager extends Manager<Role> {

@@ -1,15 +1,15 @@
 import 'package:meta/meta.dart';
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/commands/application_command_option.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/component.dart';
-import 'package:nyxx/src/models/role.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/models/user/user.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/commands/application_command_option.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/component.dart';
+import 'package:penyxx/src/models/role.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/models/user/user.dart';
 
 abstract class ComponentBuilder<T extends Component> extends CreateBuilder<T> {
   ComponentType type;

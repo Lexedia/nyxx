@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:nyxx/nyxx.dart';
+import 'package:penyxx/nyxx.dart';
 import 'package:test/test.dart';
 
 import '../../../test_manager.dart';

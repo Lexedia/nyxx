@@ -1,6 +1,6 @@
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// {@template channel_mention}
 /// A channel mentioned in a [Message].

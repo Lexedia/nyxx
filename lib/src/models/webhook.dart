@@ -1,17 +1,17 @@
-import 'package:nyxx/src/builders/message/message.dart';
-import 'package:nyxx/src/builders/webhook.dart';
-import 'package:nyxx/src/http/cdn/cdn_asset.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/application.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/message/author.dart';
-import 'package:nyxx/src/models/message/message.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/http/managers/webhook_manager.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/builders/message/message.dart';
+import 'package:penyxx/src/builders/webhook.dart';
+import 'package:penyxx/src/http/cdn/cdn_asset.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/application.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/message/author.dart';
+import 'package:penyxx/src/models/message/message.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/http/managers/webhook_manager.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 /// A partial [Webhook].
 class PartialWebhook extends WritableSnowflakeEntity<Webhook> {

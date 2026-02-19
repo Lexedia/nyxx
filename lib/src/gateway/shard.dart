@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:logging/logging.dart';
-import 'package:nyxx/src/api_options.dart';
-import 'package:nyxx/src/builders/voice.dart';
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/gateway/message.dart';
-import 'package:nyxx/src/gateway/shard_runner.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/gateway/opcode.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/api_options.dart';
+import 'package:penyxx/src/builders/voice.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/gateway/message.dart';
+import 'package:penyxx/src/gateway/shard_runner.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/gateway/opcode.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// {@template shard}
 /// A single connection to Discord's Gateway.

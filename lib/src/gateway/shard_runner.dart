@@ -4,12 +4,12 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:eterl/eterl.dart';
-import 'package:nyxx/src/api_options.dart';
-import 'package:nyxx/src/errors.dart';
-import 'package:nyxx/src/gateway/event_parser.dart';
-import 'package:nyxx/src/gateway/message.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/gateway/opcode.dart';
+import 'package:penyxx/src/api_options.dart';
+import 'package:penyxx/src/errors.dart';
+import 'package:penyxx/src/gateway/event_parser.dart';
+import 'package:penyxx/src/gateway/message.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/gateway/opcode.dart';
 
 /// An internal class that contains the logic for running a shard.
 ///

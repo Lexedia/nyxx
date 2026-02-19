@@ -1,10 +1,10 @@
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/gateway/gateway.dart';
-import 'package:nyxx/src/models/presence.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/gateway/gateway.dart';
+import 'package:penyxx/src/models/presence.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 /// A [Manager] for gateway information.
 // Use an abstract class so the client getter can be abstract,

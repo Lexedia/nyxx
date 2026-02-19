@@ -1,22 +1,22 @@
-/// @docImport 'package:nyxx/nyxx.dart';
+/// @docImport 'package:penyxx/nyxx.dart';
 library;
 
 import 'dart:typed_data';
 
 import 'package:http/http.dart';
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/http/cdn/cdn_asset.dart';
-import 'package:nyxx/src/http/managers/message_manager.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/guild/member.dart';
-import 'package:nyxx/src/models/role.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/http/cdn/cdn_asset.dart';
+import 'package:penyxx/src/http/managers/message_manager.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/guild/member.dart';
+import 'package:penyxx/src/models/role.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// The type of a [Component].
 final class ComponentType extends EnumLike<int, ComponentType> {

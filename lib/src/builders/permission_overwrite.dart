@@ -1,8 +1,8 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/models/permission_overwrite.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/models/permission_overwrite.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 class PermissionOverwriteBuilder extends CreateBuilder<PermissionOverwrite> {
   Snowflake id;

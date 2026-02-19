@@ -1,13 +1,13 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/channel/guild_channel.dart';
-import 'package:nyxx/src/builders/image.dart';
-import 'package:nyxx/src/builders/role.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/http/managers/guild_manager.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/locale.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/channel/guild_channel.dart';
+import 'package:penyxx/src/builders/image.dart';
+import 'package:penyxx/src/builders/role.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/http/managers/guild_manager.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/locale.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 class GuildBuilder extends CreateBuilder<Guild> {
   /// {@template guild_name}

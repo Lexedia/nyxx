@@ -1,10 +1,10 @@
-import 'package:nyxx/src/http/managers/voice_manager.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/guild/member.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/http/managers/voice_manager.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/guild/member.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// {@template voice_state}
 /// A user's voice connection state.

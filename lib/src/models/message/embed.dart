@@ -1,6 +1,6 @@
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// {@template embed}
 /// Rich content that can be embedded into a message, such as a video, image or custom text.

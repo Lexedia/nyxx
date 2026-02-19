@@ -1,22 +1,22 @@
 import 'dart:convert';
 
-import 'package:nyxx/src/builders/application_command.dart';
-import 'package:nyxx/src/cache/cache.dart';
-import 'package:nyxx/src/http/managers/manager.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/response.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/application.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/commands/application_command.dart';
-import 'package:nyxx/src/models/commands/application_command_option.dart';
-import 'package:nyxx/src/models/commands/application_command_permissions.dart';
-import 'package:nyxx/src/models/interaction.dart';
-import 'package:nyxx/src/models/locale.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/builders/application_command.dart';
+import 'package:penyxx/src/cache/cache.dart';
+import 'package:penyxx/src/http/managers/manager.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/response.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/application.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/commands/application_command.dart';
+import 'package:penyxx/src/models/commands/application_command_option.dart';
+import 'package:penyxx/src/models/commands/application_command_permissions.dart';
+import 'package:penyxx/src/models/interaction.dart';
+import 'package:penyxx/src/models/locale.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 /// A [Manager] for [ApplicationCommand]s.
 ///

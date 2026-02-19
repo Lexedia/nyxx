@@ -1,13 +1,13 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/application.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/commands/application_command.dart';
-import 'package:nyxx/src/models/commands/application_command_option.dart';
-import 'package:nyxx/src/models/interaction.dart';
-import 'package:nyxx/src/models/locale.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/application.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/commands/application_command.dart';
+import 'package:penyxx/src/models/commands/application_command_option.dart';
+import 'package:penyxx/src/models/interaction.dart';
+import 'package:penyxx/src/models/locale.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 class ApplicationCommandBuilder extends CreateBuilder<ApplicationCommand> {
   String name;

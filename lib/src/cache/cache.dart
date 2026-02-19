@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
 
 /// A manager for all the caches associated with a client.
 ///

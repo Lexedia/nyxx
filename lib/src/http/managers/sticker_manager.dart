@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:nyxx/src/builders/sticker.dart';
-import 'package:nyxx/src/http/managers/manager.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/sticker/global_sticker.dart';
-import 'package:nyxx/src/models/sticker/guild_sticker.dart';
-import 'package:nyxx/src/models/sticker/sticker.dart';
-import 'package:nyxx/src/models/sticker/sticker_pack.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/builders/sticker.dart';
+import 'package:penyxx/src/http/managers/manager.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/sticker/global_sticker.dart';
+import 'package:penyxx/src/models/sticker/guild_sticker.dart';
+import 'package:penyxx/src/models/sticker/sticker.dart';
+import 'package:penyxx/src/models/sticker/sticker_pack.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 class GuildStickerManager extends Manager<GuildSticker> {
   final Snowflake guildId;

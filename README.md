@@ -10,7 +10,7 @@ To get started using nyxx, follow our [getting started guide](https://nyxx.l7ssh
 
 If you're already familiar with Discord's API, here's a quick example to get you started:
 ```dart
-import 'package:nyxx/nyxx.dart';
+import 'package:penyxx/nyxx.dart';
 
 void main() async {
   final client = await Nyxx.connectGateway('<TOKEN>', GatewayIntents.allUnprivileged);

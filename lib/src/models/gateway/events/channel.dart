@@ -1,9 +1,9 @@
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/channel/text_channel.dart';
-import 'package:nyxx/src/models/channel/thread.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/channel/text_channel.dart';
+import 'package:penyxx/src/models/channel/thread.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// {@template channel_create_event}
 /// Emitted when a channel is created.

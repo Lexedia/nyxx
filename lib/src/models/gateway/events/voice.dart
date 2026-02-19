@@ -1,11 +1,11 @@
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/models/voice/voice_state.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/models/voice/voice_state.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 /// {@template voice_state_update_event}
 /// Emitted when a user's voice state is updated.

@@ -1,14 +1,14 @@
-import 'package:nyxx/src/builders/role.dart';
-import 'package:nyxx/src/http/cdn/cdn_asset.dart';
-import 'package:nyxx/src/http/managers/role_manager.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/commands/application_command_option.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/utils/flags.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/builders/role.dart';
+import 'package:penyxx/src/http/cdn/cdn_asset.dart';
+import 'package:penyxx/src/http/managers/role_manager.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/commands/application_command_option.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/utils/flags.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// A partial [Role].
 class PartialRole extends WritableSnowflakeEntity<Role> {

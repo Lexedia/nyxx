@@ -1,6 +1,6 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:nyxx/nyxx.dart';
-import 'package:nyxx/src/manager_mixin.dart';
+import 'package:penyxx/nyxx.dart';
+import 'package:penyxx/src/manager_mixin.dart';
 
 import 'gateway.dart';
 

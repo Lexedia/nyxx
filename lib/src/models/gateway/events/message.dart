@@ -1,11 +1,11 @@
-import 'package:nyxx/src/models/channel/text_channel.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/gateway/event.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/guild/member.dart';
-import 'package:nyxx/src/models/message/message.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/user/user.dart';
+import 'package:penyxx/src/models/channel/text_channel.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/gateway/event.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/guild/member.dart';
+import 'package:penyxx/src/models/message/message.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/user/user.dart';
 
 /// {@template message_create_event}
 /// Emitted when a message is sent.

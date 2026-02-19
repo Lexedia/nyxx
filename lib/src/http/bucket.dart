@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
-import 'package:nyxx/src/http/handler.dart';
-import 'package:nyxx/src/http/request.dart';
+import 'package:penyxx/src/http/handler.dart';
+import 'package:penyxx/src/http/request.dart';
 
 /// A rate limit bucket tracking requests.
 ///

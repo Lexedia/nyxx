@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:nyxx/src/http/managers/channel_manager.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/guild/guild.dart';
-import 'package:nyxx/src/models/guild/scheduled_event.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/http/managers/channel_manager.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/guild/guild.dart';
+import 'package:penyxx/src/models/guild/scheduled_event.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 /// {@template stage_instance}
 /// Information about a live stage.

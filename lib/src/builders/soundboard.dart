@@ -1,9 +1,9 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/builders/sound.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/soundboard/soundboard.dart';
-import 'package:nyxx/src/utils/building_helpers.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/builders/sound.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/soundboard/soundboard.dart';
+import 'package:penyxx/src/utils/building_helpers.dart';
 
 class SoundboardSoundBuilder extends CreateBuilder<SoundboardSound> {
   String name;

@@ -1,7 +1,7 @@
-import 'package:nyxx/src/gateway/shard.dart';
-import 'package:nyxx/src/models/gateway/gateway.dart';
-import 'package:nyxx/src/models/interaction.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/gateway/shard.dart';
+import 'package:penyxx/src/models/gateway/gateway.dart';
+import 'package:penyxx/src/models/interaction.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// The base class for all exceptions thrown by nyxx.
 class NyxxException implements Exception {

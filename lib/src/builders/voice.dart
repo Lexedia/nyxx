@@ -1,7 +1,7 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/voice/voice_state.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/voice/voice_state.dart';
 
 class VoiceStateUpdateBuilder extends UpdateBuilder<VoiceState> {
   Snowflake? channelId;

@@ -1,5 +1,5 @@
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// {@template role_subscription_data}
 /// Information about a role subscription.

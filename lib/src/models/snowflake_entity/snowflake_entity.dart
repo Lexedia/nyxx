@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/http/managers/manager.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/utils/to_string_helper/to_string_helper.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/http/managers/manager.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/utils/to_string_helper/to_string_helper.dart';
 
 /// The base class for all entities in the API identified by a [Snowflake].
 abstract class SnowflakeEntity<T extends SnowflakeEntity<T>> with ToStringHelper {

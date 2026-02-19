@@ -1,4 +1,4 @@
-import 'package:nyxx/src/builders/sound.dart';
+import 'package:penyxx/src/builders/sound.dart';
 import 'package:test/test.dart';
 
 void main() {

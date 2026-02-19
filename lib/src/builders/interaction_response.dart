@@ -1,9 +1,9 @@
-import 'package:nyxx/src/builders/application_command.dart';
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/component.dart';
-import 'package:nyxx/src/builders/message/message.dart';
-import 'package:nyxx/src/models/message/message.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/builders/application_command.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/component.dart';
+import 'package:penyxx/src/builders/message/message.dart';
+import 'package:penyxx/src/models/message/message.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
 
 class InteractionResponseBuilder extends CreateBuilder<InteractionResponseBuilder> {
   InteractionCallbackType type;

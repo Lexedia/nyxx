@@ -1,7 +1,7 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/models/emoji.dart';
-import 'package:nyxx/src/models/guild/onboarding.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/models/emoji.dart';
+import 'package:penyxx/src/models/guild/onboarding.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 class OnboardingUpdateBuilder extends UpdateBuilder<Onboarding> {
   List<OnboardingPromptBuilder> prompts;

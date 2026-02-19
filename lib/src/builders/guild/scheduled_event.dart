@@ -1,9 +1,9 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/image.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/channel/stage_instance.dart';
-import 'package:nyxx/src/models/guild/scheduled_event.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/image.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/channel/stage_instance.dart';
+import 'package:penyxx/src/models/guild/scheduled_event.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 class ScheduledEventBuilder extends CreateBuilder<ScheduledEvent> {
   Snowflake? channelId;

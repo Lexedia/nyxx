@@ -1,12 +1,12 @@
-import 'package:nyxx/src/cache/cache.dart';
-import 'package:nyxx/src/client.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/voice/voice_region.dart';
-import 'package:nyxx/src/models/voice/voice_state.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/cache/cache.dart';
+import 'package:penyxx/src/client.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/voice/voice_region.dart';
+import 'package:penyxx/src/models/voice/voice_state.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 /// A manager for [VoiceState]s.
 class VoiceManager {

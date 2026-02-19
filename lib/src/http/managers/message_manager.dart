@@ -1,35 +1,35 @@
-/// @docImport 'package:nyxx/nyxx.dart';
+/// @docImport 'package:penyxx/nyxx.dart';
 
 import 'dart:convert';
 
 import 'package:http/http.dart' show MultipartFile;
-import 'package:nyxx/src/builders/emoji/reaction.dart';
-import 'package:nyxx/src/builders/message/message.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/http/managers/manager.dart';
-import 'package:nyxx/src/http/request.dart';
-import 'package:nyxx/src/http/route.dart';
-import 'package:nyxx/src/models/application.dart';
-import 'package:nyxx/src/models/channel/channel.dart';
-import 'package:nyxx/src/models/channel/guild_channel.dart';
-import 'package:nyxx/src/models/channel/thread.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/interaction.dart';
-import 'package:nyxx/src/models/message/activity.dart';
-import 'package:nyxx/src/models/message/attachment.dart';
-import 'package:nyxx/src/models/message/author.dart';
-import 'package:nyxx/src/models/message/channel_mention.dart';
-import 'package:nyxx/src/models/component.dart';
-import 'package:nyxx/src/models/message/embed.dart';
-import 'package:nyxx/src/models/message/message.dart';
-import 'package:nyxx/src/models/message/reaction.dart';
-import 'package:nyxx/src/models/message/reference.dart';
-import 'package:nyxx/src/models/message/role_subscription_data.dart';
-import 'package:nyxx/src/models/message/poll.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/user/user.dart';
-import 'package:nyxx/src/utils/cache_helpers.dart';
-import 'package:nyxx/src/utils/parsing_helpers.dart';
+import 'package:penyxx/src/builders/emoji/reaction.dart';
+import 'package:penyxx/src/builders/message/message.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/http/managers/manager.dart';
+import 'package:penyxx/src/http/request.dart';
+import 'package:penyxx/src/http/route.dart';
+import 'package:penyxx/src/models/application.dart';
+import 'package:penyxx/src/models/channel/channel.dart';
+import 'package:penyxx/src/models/channel/guild_channel.dart';
+import 'package:penyxx/src/models/channel/thread.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/interaction.dart';
+import 'package:penyxx/src/models/message/activity.dart';
+import 'package:penyxx/src/models/message/attachment.dart';
+import 'package:penyxx/src/models/message/author.dart';
+import 'package:penyxx/src/models/message/channel_mention.dart';
+import 'package:penyxx/src/models/component.dart';
+import 'package:penyxx/src/models/message/embed.dart';
+import 'package:penyxx/src/models/message/message.dart';
+import 'package:penyxx/src/models/message/reaction.dart';
+import 'package:penyxx/src/models/message/reference.dart';
+import 'package:penyxx/src/models/message/role_subscription_data.dart';
+import 'package:penyxx/src/models/message/poll.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/user/user.dart';
+import 'package:penyxx/src/utils/cache_helpers.dart';
+import 'package:penyxx/src/utils/parsing_helpers.dart';
 
 /// A manager for [Message]s in a [TextChannel].
 class MessageManager extends Manager<Message> {

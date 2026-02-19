@@ -1,10 +1,10 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/builders/image.dart';
-import 'package:nyxx/src/builders/sentinels.dart';
-import 'package:nyxx/src/models/discord_color.dart';
-import 'package:nyxx/src/models/permissions.dart';
-import 'package:nyxx/src/models/role.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/builders/image.dart';
+import 'package:penyxx/src/builders/sentinels.dart';
+import 'package:penyxx/src/models/discord_color.dart';
+import 'package:penyxx/src/models/permissions.dart';
+import 'package:penyxx/src/models/role.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 class RoleColorsBuilder extends CreateBuilder<RoleColors> {
   DiscordColor primary;

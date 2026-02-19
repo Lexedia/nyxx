@@ -1,9 +1,9 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/http/managers/channel_manager.dart';
-import 'package:nyxx/src/models/snowflake.dart';
-import 'package:nyxx/src/models/snowflake_entity/snowflake_entity.dart';
-import 'package:nyxx/src/utils/enum_like.dart';
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/http/managers/channel_manager.dart';
+import 'package:penyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/models/snowflake_entity/snowflake_entity.dart';
+import 'package:penyxx/src/utils/enum_like.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 /// A partial [Channel] object.
 class PartialChannel extends ManagedSnowflakeEntity<Channel> {

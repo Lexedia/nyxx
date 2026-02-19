@@ -1,6 +1,6 @@
-import 'package:nyxx/src/builders/builder.dart';
-import 'package:nyxx/src/models/channel/stage_instance.dart';
-import 'package:nyxx/src/models/snowflake.dart';
+import 'package:penyxx/src/builders/builder.dart';
+import 'package:penyxx/src/models/channel/stage_instance.dart';
+import 'package:penyxx/src/models/snowflake.dart';
 
 /// A Stage Instance holds information about a live stage.
 class StageInstanceBuilder extends CreateBuilder<StageInstance> {

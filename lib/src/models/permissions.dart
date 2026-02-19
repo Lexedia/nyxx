@@ -1,4 +1,4 @@
-import 'package:nyxx/src/utils/flags.dart';
+import 'package:penyxx/src/utils/flags.dart';
 
 /// A set of permissions.
 ///
