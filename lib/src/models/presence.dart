@@ -22,9 +22,12 @@ class ClientStatus with ToStringHelper {
   /// The user's status on an active embedded (Xbox, PlayStation) session.
   final UserStatus? embedded;
 
+  /// The user's status on an active vr application.
+  final UserStatus? vr;
+
   /// {@macro client_status}
   /// @nodoc
-  ClientStatus({required this.desktop, required this.mobile, required this.web, required this.embedded});
+  ClientStatus({required this.desktop, required this.mobile, required this.web, required this.embedded, required this.vr});
 }
 
 /// The status of a client.
@@ -53,7 +56,6 @@ final class ActivityPlatform extends EnumLike<String, ActivityPlatform> {
   static const embedded = ActivityPlatform('embedded');
   static const ps4 = ActivityPlatform('ps4');
   static const ps5 = ActivityPlatform('ps5');
-
 
   /// @nodoc
   const ActivityPlatform(super.value);

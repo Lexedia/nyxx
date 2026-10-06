@@ -111,7 +111,8 @@ abstract class GatewayManager {
       desktop: maybeParse(raw['desktop'], UserStatus.new),
       mobile: maybeParse(raw['mobile'], UserStatus.new),
       web: maybeParse(raw['web'], UserStatus.new),
-      embedded: maybeParse(raw['embedded'], UserStatus.new)
+      embedded: maybeParse(raw['embedded'], UserStatus.new),
+      vr: maybeParse(raw['vr'], UserStatus.new),
     );
   }
 
