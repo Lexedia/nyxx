@@ -46,7 +46,7 @@ class IntegrationManager extends ReadOnlyManager<Integration> {
   /// Parse an [IntegrationAccount] from [raw].
   IntegrationAccount parseIntegrationAccount(Map<String, Object?> raw) {
     return IntegrationAccount(
-      id: raw['id'] as String,
+      id: raw['id'].toString(),
       name: raw['name'] as String,
     );
   }
