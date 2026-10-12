@@ -46,7 +46,7 @@ class IntegrationManager extends ReadOnlyManager<Integration> {
   /// Parse an [IntegrationAccount] from [raw].
   IntegrationAccount parseIntegrationAccount(Map<String, Object?> raw) {
     return IntegrationAccount(
-      id: Snowflake.parse(raw['id']!),
+      id: raw['id'] as String,
       name: raw['name'] as String,
     );
   }

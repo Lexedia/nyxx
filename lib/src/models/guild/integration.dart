@@ -118,7 +118,7 @@ final class IntegrationExpireBehavior extends EnumLike<int, IntegrationExpireBeh
 /// {@category models}
 class IntegrationAccount with ToStringHelper {
   /// The ID of this account.
-  final Snowflake id;
+  final String id;
 
   /// The name of this account.
   final String name;
