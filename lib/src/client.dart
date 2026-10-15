@@ -373,9 +373,13 @@ class NyxxGateway extends Nyxx with ManagerMixin, EventMixin implements NyxxRest
 
   @override
   Future<void> _doClose() async {
-    await [
-      gateway.close(),
-      httpHandler.close(),
-    ].wait;
+    try {
+      await gateway.close();
+      if (options.closeGracePeriod > Duration.zero) {
+        await Future<void>.delayed(options.closeGracePeriod);
+      }
+    } finally {
+      await httpHandler.close();
+    }
   }
 }

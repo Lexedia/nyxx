@@ -1,6 +1,8 @@
 import 'package:logging/logging.dart';
 import 'package:nyxx/src/cache/cache.dart';
+import 'package:nyxx/src/api_options.dart';
 import 'package:nyxx/src/client.dart';
+import 'package:nyxx/src/gateway/gateway.dart';
 import 'package:nyxx/src/models/channel/channel.dart';
 import 'package:nyxx/src/models/commands/application_command.dart';
 import 'package:nyxx/src/models/commands/application_command_permissions.dart';
@@ -214,9 +216,24 @@ class GatewayClientOptions extends RestClientOptions {
   /// If the remaining number of session starts is below this number, an error will be thrown when connecting.
   final int minimumSessionStarts;
 
+  /// Whether to hold the events received from the Gateway until [Gateway.releaseEvents] is called.
+  ///
+  /// Listeners added to [NyxxGateway.onEvent] (and the other event streams) only get the events dispatched after they
+  /// were added. Holding the events lets the client add all its listeners after connecting, i.e. the events replayed when resuming a
+  /// session (see [GatewayApiOptions.sessions]). The cache is updated as the events are released.
+  final bool holdEvents;
+
+  /// How long [Nyxx.close] keeps the HTTP client open after closing the Gateway connection.
+  ///
+  /// No event is received once the Gateway is closed, but the handlers of the last ones may still be running and
+  /// making requests; they get this long to finish.
+  final Duration closeGracePeriod;
+
   /// Create a new [GatewayClientOptions].
   const GatewayClientOptions({
     this.minimumSessionStarts = 10,
+    this.holdEvents = false,
+    this.closeGracePeriod = Duration.zero,
     super.plugins,
     super.loggerName,
     super.rateLimitWarningThreshold,

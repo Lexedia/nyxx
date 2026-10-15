@@ -73,9 +73,24 @@ class Gateway extends GatewayManager with EventParser {
   // simply making _messagesController a broadcast controller means events will
   // be buffered until this field is initialized, which prevents events from
   // being dropped during the connection process.
-  late final Stream<ShardMessage> messages = _messagesController.stream.asBroadcastStream();
+  late final Stream<ShardMessage> messages = _held(_messagesController.stream).asBroadcastStream();
 
   final StreamController<ShardMessage> _messagesController = StreamController();
+
+  final Completer<void> _released = Completer();
+
+  /// Starts dispatching the events held because of [GatewayClientOptions.holdEvents], and the ones received after.
+  ///
+  /// Call it once every listener was added. Does nothing if the events aren't held, or were already released.
+  void releaseEvents() {
+    if (!_released.isCompleted) _released.complete();
+  }
+
+  /// [messages] is only read once the events are released, until then [_messagesController] buffers them.
+  Stream<ShardMessage> _held(Stream<ShardMessage> messages) async* {
+    await _released.future;
+    yield* messages;
+  }
 
   final Completer<void> _connectedCompleter = Completer();
   final Completer<void> _doneCompleter = Completer();
@@ -126,6 +141,17 @@ class Gateway extends GatewayManager with EventParser {
   /// Create a new [Gateway].
   Gateway(this.client, this.gatewayBot, this.shards, this.totalShards, this.shardIds) : super.create() {
     final logger = Logger('${client.options.loggerName}.Gateway');
+
+    if (!client.options.holdEvents) {
+      releaseEvents();
+    } else {
+      late final Timer reminder;
+      reminder = Timer(const Duration(seconds: 30), () {
+        _pendingTimers.remove(reminder);
+        if (!_released.isCompleted) logger.warning('The events are still held 30 seconds after connecting, call Gateway.releaseEvents()');
+      });
+      _pendingTimers.add(reminder);
+    }
 
     // https://discord.com/developers/docs/topics/gateway#rate-limiting
     const identifyDelay = Duration(seconds: 5);
@@ -288,6 +314,8 @@ class Gateway extends GatewayManager with EventParser {
       for (final timer in _pendingTimers) {
         timer.cancel();
       }
+
+      releaseEvents();
 
       try {
         await Future.wait(shards.map((shard) => shard.close(keepSession: keepSessionsOnClose)));
