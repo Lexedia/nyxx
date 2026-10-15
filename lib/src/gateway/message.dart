@@ -19,13 +19,62 @@ class ShardData with ToStringHelper {
   /// The original connection URI from [GatewayManager.fetchGatewayBot].
   final Uri originalConnectionUri;
 
+  /// The session to resume instead of identifying, if any.
+  final ShardSession? session;
+
   /// {@macro shard_data}
   const ShardData({
     required this.totalShards,
     required this.id,
     required this.apiOptions,
     required this.originalConnectionUri,
+    this.session,
   });
+}
+
+/// {@template shard_session}
+/// The information needed to resume a shard's Gateway session, possibly from another process.
+/// {@endtemplate}
+///
+/// Discord keeps a session open for a short while after its connection is closed, unless it was closed with a 1000
+/// or 1001 code.
+/// Resuming it replays the events that were dispatched in the meantime.
+///
+/// {@category gateway}
+class ShardSession with ToStringHelper {
+  /// The ID of the session.
+  final String sessionId;
+
+  /// The sequence number of the last event received on the session.
+  final int seq;
+
+  /// The URL to connect to when resuming the session, without any query parameters added by nyxx.
+  final Uri resumeUri;
+
+  /// The total number of shards when the session was created. The session can't be resumed with a different count.
+  final int totalShards;
+
+  /// {@macro shard_session}
+  const ShardSession({
+    required this.sessionId,
+    required this.seq,
+    required this.resumeUri,
+    required this.totalShards,
+  });
+
+  factory ShardSession.fromJson(Map<String, Object?> json) => ShardSession(
+        sessionId: json['session_id'] as String,
+        seq: json['seq'] as int,
+        resumeUri: Uri.parse(json['resume_url'] as String),
+        totalShards: json['total_shards'] as int,
+      );
+
+  Map<String, Object?> toJson() => {
+        'session_id': sessionId,
+        'seq': seq,
+        'resume_url': resumeUri.toString(),
+        'total_shards': totalShards,
+      };
 }
 
 /// The base class for all control messages sent from the shard to the client.
@@ -65,8 +114,11 @@ class Disconnecting extends ShardMessage {
   /// The reason why the shard is disconnecting.
   final String reason;
 
+  /// The session left open on Discord's side, if the shard was disposed with [Dispose.keepSession] and had one.
+  final ShardSession? session;
+
   /// Create a new [Disconnecting].
-  Disconnecting({required this.reason});
+  Disconnecting({required this.reason, this.session});
 }
 
 /// A shard message sent when the shard adds a payload to the connection.
@@ -128,7 +180,12 @@ class Identify extends GatewayMessage {}
 /// {@category gateway}
 ///
 /// The shard can no longer be used after this is sent.
-class Dispose extends GatewayMessage {}
+class Dispose extends GatewayMessage {
+  /// Whether to leave the session open on Discord's side so it can be resumed later, see [ShardSession].
+  final bool keepSession;
+
+  Dispose({this.keepSession = false});
+}
 
 /// A gateway message sent to instruct the shard to end its current connection and create a new one.
 ///

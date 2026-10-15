@@ -52,16 +52,40 @@ class ShardRunner {
   /// Whether the shard is currently disposing and should not reconnect.
   bool disposing = false;
 
+  /// Whether to leave the session open on Discord's side when disposing.
+  bool keepSession = false;
+
+  /// The resume URL from the latest READY event, without the connection options.
+  Uri? resumeUri;
+
   /// The URI to use when connecting to the Gateway.
   late Uri gatewayUri = originalGatewayUri;
 
   /// The original URI to use when connecting to the Gateway for the first time or after an invalid session.
-  late final Uri originalGatewayUri = data.originalConnectionUri.replace(queryParameters: {
-    ...data.originalConnectionUri.queryParameters,
-    ...data.apiOptions.gatewayConnectionOptions,
-  });
+  late final Uri originalGatewayUri = withConnectionOptions(data.originalConnectionUri);
 
-  ShardRunner(this.data);
+  /// The session that can be resumed, if any.
+  ShardSession? get session => switch ((sessionId, seq, resumeUri)) {
+        (final sessionId?, final seq?, final resumeUri?) when canResume =>
+          ShardSession(sessionId: sessionId, seq: seq, resumeUri: resumeUri, totalShards: data.totalShards),
+        _ => null,
+      };
+
+  ShardRunner(this.data) {
+    if (data.session case final session?) {
+      sessionId = session.sessionId;
+      seq = session.seq;
+      resumeUri = session.resumeUri;
+      gatewayUri = withConnectionOptions(session.resumeUri);
+      canResume = true;
+    }
+  }
+
+  /// Append the query parameters from the API options to [uri].
+  Uri withConnectionOptions(Uri uri) => uri.replace(queryParameters: {
+        ...uri.queryParameters,
+        ...data.apiOptions.gatewayConnectionOptions,
+      });
 
   /// Run the shard runner.
   Stream<ShardMessage> run(Stream<GatewayMessage> messages) async* {
@@ -106,7 +130,8 @@ class ShardRunner {
         pendingIdentify?.complete(message);
       } else if (message is Dispose) {
         disposing = true;
-        connection?.close();
+        keepSession = message.keepSession;
+        connection?.close(keepSession ? 4269 : 1000);
         pendingIdentify?.complete(null);
 
         // We need to start the shard to jump ahead to the check for exiting the shard.
@@ -145,7 +170,7 @@ class ShardRunner {
           // Do this now instead of after the connection is closed in case we get
           // a dispose request before the shard is even started.
           if (disposing) {
-            controller.add(Disconnecting(reason: 'Dispose requested'));
+            controller.add(Disconnecting(reason: 'Dispose requested', session: keepSession ? session : null));
             return;
           }
 
@@ -196,12 +221,9 @@ class ShardRunner {
               seq = event.seq;
 
               if (event.name == 'READY') {
-                final resumeUri = Uri.parse(event.payload['resume_gateway_url'] as String);
+                final resumeUri = this.resumeUri = Uri.parse(event.payload['resume_gateway_url'] as String);
 
-                gatewayUri = resumeUri.replace(queryParameters: {
-                  ...resumeUri.queryParameters,
-                  ...data.apiOptions.gatewayConnectionOptions,
-                });
+                gatewayUri = withConnectionOptions(resumeUri);
 
                 sessionId = event.payload['session_id'] as String;
 

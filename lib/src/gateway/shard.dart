@@ -53,6 +53,13 @@ class Shard extends Stream<ShardMessage> implements StreamSink<GatewayMessage> {
 
   final Stopwatch _disconnectedStopwatch = Stopwatch();
 
+  ShardSession? _session;
+
+  /// The session left open on Discord's side after this shard was closed with `keepSession`, to resume it later.
+  ///
+  /// This is `null` until this shard is closed, or if it had no session that could be resumed.
+  ShardSession? get session => _session;
+
   /// Create a new [Shard].
   Shard(this.id, this.isolate, this.receiveStream, this.sendPort, this.client) {
     // Technically this code is unsafe as plugins may be given a client that does not yet have a Gateway assigned.
@@ -147,7 +154,9 @@ class Shard extends Stream<ShardMessage> implements StreamSink<GatewayMessage> {
   }
 
   /// Connect to the Gateway using the provided parameters.
-  static Future<Shard> connect(int id, int totalShards, GatewayApiOptions apiOptions, Uri connectionUri, NyxxGateway client) async {
+  ///
+  /// If [session] is set, the shard resumes it instead of identifying.
+  static Future<Shard> connect(int id, int totalShards, GatewayApiOptions apiOptions, Uri connectionUri, NyxxGateway client, {ShardSession? session}) async {
     final logger = Logger('${client.options.loggerName}.Shards[$id]');
 
     final receivePort = ReceivePort('Shard #$id message stream (main)');
@@ -163,6 +172,7 @@ class Shard extends Stream<ShardMessage> implements StreamSink<GatewayMessage> {
         id: id,
         apiOptions: apiOptions,
         originalConnectionUri: connectionUri,
+        session: session,
         sendPort: receivePort.sendPort,
       ),
     );
@@ -224,11 +234,11 @@ class Shard extends Stream<ShardMessage> implements StreamSink<GatewayMessage> {
   }
 
   @override
-  Future<void> close() {
+  Future<void> close({bool keepSession = false}) {
     Future<void> doClose() async {
       _isClosed = true;
 
-      add(Dispose());
+      add(Dispose(keepSession: keepSession));
 
       _sendController.close();
       // _rawReceiveController and _transformedReceiveController are closed by the piped
@@ -238,7 +248,10 @@ class Shard extends Stream<ShardMessage> implements StreamSink<GatewayMessage> {
         // Give the isolate time to shut down cleanly, but kill it if it takes too long.
         try {
           // Wait for disconnection confirmation.
-          await firstWhere((message) => message is Disconnecting).then(drain).timeout(const Duration(seconds: 5));
+          await firstWhere((message) => message is Disconnecting).then((message) {
+            _session = (message as Disconnecting).session;
+            return drain<void>();
+          }).timeout(const Duration(seconds: 5));
         } on TimeoutException {
           logger.warning('Isolate took too long to shut down, killing it');
           isolate.kill(priority: Isolate.immediate);
@@ -278,6 +291,7 @@ class _IsolateSpawnData extends ShardData {
     required super.id,
     required super.apiOptions,
     required super.originalConnectionUri,
+    super.session,
     required this.sendPort,
   });
 }

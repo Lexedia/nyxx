@@ -81,6 +81,18 @@ class Gateway extends GatewayManager with EventParser {
   final Completer<void> _doneCompleter = Completer();
   bool _isClosed = false;
 
+  /// Whether to leave the shards' sessions open on Discord's side when this [Gateway] closes, e.g. to restart the
+  /// process without missing any event.
+  ///
+  /// The sessions are then available in [sessions], to pass to [GatewayApiOptions.sessions] in the next process.
+  bool keepSessionsOnClose = false;
+
+  /// The sessions left open by the shards, keyed by shard ID. Empty until this [Gateway] is closed with [keepSessionsOnClose].
+  Map<int, ShardSession> get sessions => {
+        for (final shard in shards)
+          if (shard.session case final session?) shard.id: session,
+      };
+
   StreamController<ShardMessage> get messagesController => _messagesController;
 
   /// A stream of dispatch events received from all shards.
@@ -182,7 +194,7 @@ class Gateway extends GatewayManager with EventParser {
                   await delayCompleter.future;
                   _pendingTimers.remove(delayTimer);
                 });
-              } else if (event case EventReceived(event: RawDispatchEvent(name: 'READY'))) {
+              } else if (event case EventReceived(event: RawDispatchEvent(name: 'READY' || 'RESUMED'))) {
                 if (!_connectedCompleter.isCompleted) {
                   _connectedCompleter.complete();
                 }
@@ -241,7 +253,16 @@ class Gateway extends GatewayManager with EventParser {
       'Cannot enable payload compression when using the ETF payload format',
     );
 
-    final shards = shardIds.map((id) => Shard.connect(id, totalShards, client.apiOptions, gatewayBot.url, client));
+    final shards = shardIds.map((id) {
+      // A session belongs to a shard ID for a given shard count, it can't be resumed once the count changed.
+      final session = client.apiOptions.sessions?[id];
+      final resumable = session != null && session.totalShards == totalShards;
+      if (session != null && !resumable) {
+        logger.info('Not resuming the session of shard $id, it was created with ${session.totalShards} shards instead of $totalShards');
+      }
+
+      return Shard.connect(id, totalShards, client.apiOptions, gatewayBot.url, client, session: resumable ? session : null);
+    });
     final gateway = Gateway(client, gatewayBot, await Future.wait(shards), totalShards, shardIds);
     await gateway._connectedCompleter.future;
     return gateway;
@@ -269,7 +290,7 @@ class Gateway extends GatewayManager with EventParser {
       }
 
       try {
-        await Future.wait(shards.map((shard) => shard.close()));
+        await Future.wait(shards.map((shard) => shard.close(keepSession: keepSessionsOnClose)));
       } finally {
         _messagesController.close();
       }

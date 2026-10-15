@@ -157,6 +157,7 @@ export 'src/gateway/message.dart'
         Sent,
         ShardData,
         ShardMessage,
+        ShardSession,
         Identify,
         RequestingIdentify,
         StartShard,

@@ -2,6 +2,8 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'package:nyxx/src/builders/presence.dart';
+import 'package:nyxx/src/gateway/gateway.dart';
+import 'package:nyxx/src/gateway/message.dart';
 import 'package:nyxx/src/intents.dart';
 import 'package:nyxx/src/utils/flags.dart';
 import 'package:oauth2/oauth2.dart';
@@ -126,6 +128,12 @@ class GatewayApiOptions extends RestApiOptions {
   /// The presence the client will set after first connecting to the Gateway.
   final PresenceBuilder? initialPresence;
 
+  /// Sessions to resume instead of identifying, keyed by shard ID, e.g. the [Gateway.sessions] of a previous process.
+  ///
+  /// A resumed shard receives a RESUMED event instead of READY, and the events dispatched since the session was left.
+  /// If Discord rejects a session (it expired), the shard identifies as usual.
+  final Map<int, ShardSession>? sessions;
+
   /// The query parameters to append to the Gateway connection URL.
   Map<String, String> get gatewayConnectionOptions => {
         'v': apiVersion.toString(),
@@ -154,6 +162,7 @@ class GatewayApiOptions extends RestApiOptions {
     this.totalShards,
     this.largeThreshold,
     this.initialPresence,
+    this.sessions,
     this.browser = 'nyxx',
     this.device = 'nyxx',
     String? operatingSystem,
